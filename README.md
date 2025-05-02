@@ -1,12 +1,12 @@
-# 🧪 Testovací scénář – API informace o zemích
+#  Testovací scénář – API informace o zemích
 
-## 🎯 Cíl testování
+##  Cíl testování
 
 Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétní země (např. Francie, Polsko) i na celý seznam států (`/all`). Testy se zaměřují na status kód, název země, vlajku, měnu a strukturu JSON dat.
 
 ---
 
-## 📍 Testované endpointy
+##  Testované endpointy
 
 - `GET https://restcountries.com/v3.1/name/france`
 - `GET https://restcountries.com/v3.1/name/poland`
@@ -14,7 +14,7 @@ Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétn
 
 ---
 
-## ✅ Testovací kroky a očekávané výsledky
+##  Testovací kroky a očekávané výsledky
 
 | Krok | Popis | Očekávaný výsledek |
 |------|-------|----------------------|
@@ -31,7 +31,7 @@ Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétn
 
 ---
 
-## 🧭 Postup použití kolekce v Postmanu
+##  Postup použití kolekce v Postmanu
 
 1. Otevři [Postman](https://www.postman.com/)
 2. Vytvoř novou kolekci a pojmenuj ji např. `Countries API Tests`
@@ -41,7 +41,7 @@ Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétn
    - `GET https://restcountries.com/v3.1/all`
 4. Do záložky **Tests** každého požadavku vlož odpovídající testy (viz níže)
 5. Spusť testy jednotlivě nebo pomocí Collection Runneru
-6. Sleduj výsledky – zelené = úspěšné testy ✅
+6. Sleduj výsledky – zelené = úspěšné testy 
 
 ---
 
@@ -49,26 +49,53 @@ Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétn
 
 - Postman (lokálně nebo webová verze)
 - JavaScript testy v záložce **Tests**
-- Možnost exportu kolekce jako `.postman_collection.json`
+
+
+---
+# Testovací scénář – API informace o zemích
+
+## Cíl testování
+
+Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétní země (např. Francie, Polsko) i na celý seznam států (`/all`). Testy se zaměřují na status kód, název země, vlajku, měnu a strukturu JSON dat.
 
 ---
 
-## 🌍 **Testy pro Francii** (`/name/france`)
+## Testy pro Francii (`/name/france`)
 
-```javascript
-// Status kód je 200
-pm.test("Status kód je 200", function () {
-    pm.response.to.have.status(200);
-});
+### Status kód je 200
+Ověřte, že odpověď má status kód 200.
 
-var jsonData = pm.response.json();
+### Jméno země je 'France'
+Ověřte, že jméno země (`name.common`) je "France".
 
-// Jméno země je 'France'
-pm.test("Jméno země je 'France'", function () {
-    pm.expect(jsonData[0].name.common).to.eql("France");
-});
+### Vlajka je 'Francie'
+Ověřte, že vlajka (`flag`) je "Francie".
 
-// Vlajka je '🇫🇷'
-pm.test("Vlajka je '🇫🇷'", function () {
-    pm.expect(jsonData[0].flag).to.eql("🇫🇷");
-});
+---
+
+## Testy pro Polsko (`/name/poland`)
+
+### Status kód je 200
+Ověřte, že odpověď má status kód 200.
+
+### Jméno země je 'Poland'
+Ověřte, že jméno země (`name.common`) je "Poland".
+
+### Vlajka je 'Polsko'
+Ověřte, že vlajka (`flag`) je "Polsko".
+
+### Název měny je 'Polish złoty'
+Ověřte, že název měny (`currencies.PLN.name`) je "Polish złoty".
+
+---
+
+## Testy pro všechny státy (`/all`)
+
+### Pole `common` existuje
+Ověřte, že objekt `name` obsahuje vlastnost `common`.
+
+### Pole `common` je vyplněno
+Ověřte, že hodnota `name.common` není prázdná.
+
+---
+

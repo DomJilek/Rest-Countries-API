@@ -1,11 +1,11 @@
-# 🧪 Testy pro API Informace o Zemích
+#  Testy pro API Informace o Zemích
 
-## 🎯 Cíl testování
+##  Cíl testování
 Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétní země (např. Francie, Polsko) i na celý seznam států (`/all`). Testy se zaměřují na status kód, název země, vlajku, měnu a strukturu JSON dat.
 
 ---
 
-## ✅ Testy 
+##  Testy 
 
 ### 1. Testy pro Francii (`/name/france`)
 
