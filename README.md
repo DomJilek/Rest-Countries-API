@@ -1,12 +1,12 @@
-#  Testovací scénář – API informace o zemích
+# Testovací scénář – API informace o zemích
 
-##  Cíl testování
+## Cíl testování
 
 Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétní země (např. Francie, Polsko) i na celý seznam států (`/all`). Testy se zaměřují na status kód, název země, vlajku, měnu a strukturu JSON dat.
 
 ---
 
-##  Testované endpointy
+## Testované endpointy
 
 - `GET https://restcountries.com/v3.1/name/france`
 - `GET https://restcountries.com/v3.1/name/poland`
@@ -14,7 +14,7 @@ Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétn
 
 ---
 
-##  Testovací kroky a očekávané výsledky
+## Testovací kroky a očekávané výsledky
 
 | Krok | Popis | Očekávaný výsledek |
 |------|-------|----------------------|
@@ -27,11 +27,10 @@ Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétn
 | 7 | Ověřit název měny | `currencies.PLN.name` = `Polish złoty` |
 | 8 | Ověřit strukturu objektu | `name` má vlastnost `common` |
 | 9 | `name.common` není prázdný | Hodnota není `null` ani prázdný string |
-| 10 | Odeslat požadavek na `/all` | HTTP 200 a seznam více než 200 států |
 
 ---
 
-##  Postup použití kolekce v Postmanu
+## Postup použití kolekce v Postmanu
 
 1. Otevři [Postman](https://www.postman.com/)
 2. Vytvoř novou kolekci a pojmenuj ji např. `Countries API Tests`
@@ -45,21 +44,6 @@ Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétn
 
 ---
 
-## 🛠 Nástroje
-
-- Postman (lokálně nebo webová verze)
-- JavaScript testy v záložce **Tests**
-
-
----
-# Testovací scénář – API informace o zemích
-
-## Cíl testování
-
-Ověřit správnost a úplnost odpovědi REST API při dotazování na konkrétní země (např. Francie, Polsko) i na celý seznam států (`/all`). Testy se zaměřují na status kód, název země, vlajku, měnu a strukturu JSON dat.
-
----
-
 ## Testy pro Francii (`/name/france`)
 
 ### Status kód je 200
@@ -68,8 +52,8 @@ Ověřte, že odpověď má status kód 200.
 ### Jméno země je 'France'
 Ověřte, že jméno země (`name.common`) je "France".
 
-### Vlajka je 'Francie'
-Ověřte, že vlajka (`flag`) je "Francie".
+### Vlajka je '🇫🇷'
+Ověřte, že vlajka (`flag`) je "🇫🇷".
 
 ---
 
@@ -81,8 +65,8 @@ Ověřte, že odpověď má status kód 200.
 ### Jméno země je 'Poland'
 Ověřte, že jméno země (`name.common`) je "Poland".
 
-### Vlajka je 'Polsko'
-Ověřte, že vlajka (`flag`) je "Polsko".
+### Vlajka je '🇵🇱'
+Ověřte, že vlajka (`flag`) je "🇵🇱".
 
 ### Název měny je 'Polish złoty'
 Ověřte, že název měny (`currencies.PLN.name`) je "Polish złoty".
@@ -91,11 +75,8 @@ Ověřte, že název měny (`currencies.PLN.name`) je "Polish złoty".
 
 ## Testy pro všechny státy (`/all`)
 
-### Pole `common` existuje
+### Ověřit strukturu objektu
 Ověřte, že objekt `name` obsahuje vlastnost `common`.
 
-### Pole `common` je vyplněno
+### `name.common` není prázdný
 Ověřte, že hodnota `name.common` není prázdná.
-
----
-
